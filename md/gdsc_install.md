@@ -6,16 +6,18 @@ You will need a minimum of:
 
 - python (see notes below)<sup>1</sup>  
 - jupyter notebook<sup>1</sup>  
-- [docker desktop](https://www.docker.com/products/personal/) (personal version)  
+- [docker desktop](https://www.docker.com/products/personal/) (personal version)<sup>3</sup>  
 - git (command line preferred) and a github account<sup>2</sup>  
 
 <sup>1</sup> both can be installed with either conda or [miniconda](https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html) (preferred)  
 <sup>2</sup> already on most windows machines and for macOS install the XCode command line tools (```$ xcode-select --install```)  
+<sup>3</sup> make sure to get the correct docker for your operating system
 
 ### Set up python environment  
 
 On a mac (in terminal)  
 ```
+$ conda install jupyter
 $ conda create --name gdsc python=3.9
 $ source activate gdsc
 $ pip install kubernetes boxsdk "boxsdk[jwt]" python-dotenv pyyaml pandas openpyxl 
@@ -27,6 +29,7 @@ $ python -m ipykernel install --user --name gdsc --display-name "gdsc"
 
 On a pc (in powershell)  
 ```
+> conda install jupyter
 > conda create --name gdsc python=3.9
 > conda activate gdsc
 > pip install kubernetes boxsdk "boxsdk[jwt]" python-dotenv pyyaml pandas openpyxl 
@@ -79,9 +82,9 @@ On a pc (in powershell)
 |   |   postgis-secret.yaml
 ```  
 
-NOTE: make sure the solr/ and tileserv/ folders have the data from the zipfile.  
+NOTE: make sure the solr/ and tileserv/ folders have the actual files from the provided zipfile.  
 
-### Testing the install  
+### Testing the Install  
 
 - Start docker desktop  
 - Locate the settings for kubernetes (gear icon top right) and check the ```Enable Kubernetes``` box, and then click the ```apply and restart button```.
@@ -94,8 +97,35 @@ On a mac (in terminal)
 On a pc (in powershell)  
 ```> .\postgis.ps1 -l```  
 
-NOTE: the new mac silicon chip may throw errors ...  
-NOTE: if it takes to long, the port forward will throw errors  
+Some text will scroll by as the applications and services are brought into action by the Kubernetes controller. NOTE: if it takes to long, there may be a "port-forward" error at the end; it would look something like:
+
+```error: unable to forward port because pod is not running. Current status ...```  
+
+If this happens, press enter and then type the following:
+
+On a mac (in terminal)  
+```$ kubectl port-forward svc/postgis-proxy -n gdsc 5430:5432 &```  
+
+On a pc (in powershell)  
+```> Start-Job -ScriptBlock { kubectl port-forward svc/postgis-proxy -n gdsc 5430:5432 }```  
+
+To see if everything worked correctly, type the following and press enter (same for mac or pc):
+
+```$ kubectl get pods -n gdsc```
+
+you should see something similar to:
+
+```
+NAME                                READY   STATUS    RESTARTS        AGE
+flask-gdsc-7959986f7d-d6mpk         1/1     Running   0               3m38s
+postgis-osgeo-5fcbd48b7f-hxpmr      2/2     Running   0               3m39s
+postgis-proxy-5d57f77dc8-d6jdq      1/1     Running   0               3m39s
+postgis-tileserv-7fb8d9b5c8-x2f55   1/1     Running   3 (3m15s ago)   3m38s
+postgrest-5656d4c8b5-nf4m8          1/1     Running   0               3m38s
+solr-8687cbd46c-f52ff               1/1     Running   0               3m38s
+```
+
+### Running the Data Management and Curation Tools
 
 - To use the management and curation tools, start a second shell and navigate to the tools repository and type:  
 
@@ -138,3 +168,27 @@ fields = get_meta('MetadataFields',2)
 ```
 
 If the code runs with no errors, you are now ready to start using the toolset (see [basic use](gdsc_use.md)).  
+
+### Additional docker repository install
+
+If you want to be able to build the docker images for GDSC you need to clone the [docker repository](https://github.com/Geospatial-Digital-Special-Collections/docker) in the same place you cloned the tools and kubernetes repositories. After cloning you will need to place the keys, license file, and tokens from the provided zipfile in the config folder as follows:
+
+```
+.  
++-- docker  
+|   +-- config  
+|   |   +-- ESRI
+|   |   |   +-- PostgresSQL
+|   |   |   |   +-- 12
+|   |   |   |   |   +-- Linux64
+|   |   |   |   |   |   st_geometry.so
+|   |   +-- kubernetes  
+|   |   |   gdsc-controller-token.yaml
+|   |   |   postgis-secret.yaml  
+|   |   +-- pki 
+|   |   |   client_cert.pem  
+|   |   |   client_key.pem  
+|   |   |   server_cert.pem  
+```  
+
+See the README.md in the docker repository for information on how to build the images.
