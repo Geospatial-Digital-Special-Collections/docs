@@ -6,4 +6,4 @@ The toolset in the jupyter notebook provides basic functionality to:
 - spin down and delete the pod with a dataset
 - see all running pods
 - review metadata
-- update all metadata
+- update all json metadata on disk

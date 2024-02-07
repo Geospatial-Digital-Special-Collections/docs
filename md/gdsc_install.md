@@ -45,9 +45,12 @@ On a pc (in powershell)
 
 ### Post-install configuration  
 
-- Create a project directory and clone the following two repositories as sub-directories  
+- Create a project directory/folder on your computer, for example a new folder in your documents directory called ```gdsc```
+- Open a terminal (mac) or powershell (pc) and navigate to the directory you just create, for example ```$ cd ~/Documents/gdsc```
+- Clone the following two repositories as sub-directories  
    - https://github.com/Geospatial-Digital-Special-Collections/tools   
    - https://github.com/Geospatial-Digital-Special-Collections/kubernetes  
+   - hint, in the shell (mac or pc), you clone a repository with ```$ git clone <url copied from repository>```
 - From the provided zipfile, get the set of credentials, encryption keys, and base disk images and place them in the following directories in the respective repositories as follows:  
 
 ```
@@ -76,16 +79,23 @@ On a pc (in powershell)
 |   |   postgis-secret.yaml
 ```  
 
+NOTE: make sure the solr/ and tileserv/ folders have the data from the zipfile.  
+
 ### Testing the install  
 
 - Start docker desktop  
+- Locate the settings for kubernetes (gear icon top right) and check the ```Enable Kubernetes``` box, and then click the ```apply and restart button```.
+- Under the ```General``` settings make sure the "docker Desktop does not run on startup" 
 - To start the kubernetes stack on your local machine, in shell (mac terminal or windows powershell) navigate to your kubernetes repository and type:  
 
 On a mac (in terminal)  
-```$ postgis.sh -l```  
+```$ ./postgis.sh -l```  
 
 On a pc (in powershell)  
-```> postgis.ps1 -l```  
+```> .\postgis.ps1 -l```  
+
+NOTE: the new mac silicon chip may throw errors ...  
+NOTE: if it takes to long, the port forward will throw errors  
 
 - To use the management and curation tools, start a second shell and navigate to the tools repository and type:  
 
