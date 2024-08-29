@@ -9,15 +9,16 @@ You will need a minimum of:
 - [docker desktop](https://www.docker.com/products/personal/) (personal version)<sup>3</sup>  
 - git (command line preferred) and a github account<sup>2</sup>  
 
-<sup>1</sup> both can be installed with either conda or [miniconda](https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html) (preferred)  
+<sup>1</sup> both can be installed with either [anaconda](https://www.anaconda.com/), [miniconda](https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html) (preferred), or [miniforge](https://github.com/conda-forge/miniforge) (advanced).  
 <sup>2</sup> already on most windows machines and for macOS install the XCode command line tools (```$ xcode-select --install```)  
-<sup>3</sup> make sure to get the correct docker for your operating system
+<sup>3</sup> make sure to get the correct docker for your operating system. Windows PC's may need extra configuration to enable the linux subsystem, see the [Docker documentation](https://docs.docker.com/desktop/install/windows-install/).
 
 ### Set up python environment  
 
 On a mac (in terminal)  
 ```
-$ conda install jupyter
+$ conda install jupyter notebook
+$ conda update -n base -c defaults conda
 $ conda create --name gdsc python=3.9
 $ source activate gdsc
 $ pip install kubernetes boxsdk "boxsdk[jwt]" python-dotenv pyyaml pandas openpyxl 
@@ -29,9 +30,11 @@ $ python -m ipykernel install --user --name gdsc --display-name "gdsc"
 
 On a pc (in powershell)  
 ```
-> conda install jupyter
+> conda init powershell
+> conda update -n base -c defaults conda
 > conda create --name gdsc python=3.9
 > conda activate gdsc
+> conda install jupyter notebook
 > pip install kubernetes boxsdk "boxsdk[jwt]" python-dotenv pyyaml pandas openpyxl 
 # postgis and the ipykernel are used in dev but not production
 > pip install psycopg2-binary postgis
