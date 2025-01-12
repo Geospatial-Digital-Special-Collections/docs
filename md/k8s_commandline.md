@@ -40,6 +40,16 @@ An alternative to using docker desktop.
   sudo cloud-provider-kind > /dev/null 2>&1 &
   ```
 
+- Start GDSC  
+  ```
+  ./postgis.sh -lk
+  ```
+
+- Stop GDSC  
+  ```
+  ./cleanup -l
+  ```
+  
 - bring down cluster and stop docker  
   ```
   kind delete cluster
