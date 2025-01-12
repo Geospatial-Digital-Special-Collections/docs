@@ -6,7 +6,7 @@ You will need a minimum of:
 
 - python (see notes below)<sup>1</sup>  
 - jupyter notebook<sup>1</sup>  
-- [docker desktop](https://www.docker.com/products/personal/) (personal version)<sup>3</sup>  
+- [docker desktop](https://www.docker.com/products/personal/) (personal version)<sup>3</sup> or (command line alternative)[k8s_commandline.md].  
 - git (command line preferred) and a github account<sup>2</sup>  
 
 <sup>1</sup> both can be installed with either [anaconda](https://www.anaconda.com/), [miniconda](https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html) (preferred), or [miniforge](https://github.com/conda-forge/miniforge) (advanced).  
