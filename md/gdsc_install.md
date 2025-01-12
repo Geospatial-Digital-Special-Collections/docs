@@ -93,6 +93,7 @@ NOTE: make sure the solr/ and tileserv/ folders have the actual files from the p
 - Locate the settings for kubernetes (gear icon top right) and check the ```Enable Kubernetes``` box, and then click the ```apply and restart button```.
 - Under the ```General``` settings make sure the "docker Desktop does not run on startup" 
 - To start the kubernetes stack on your local machine, in shell (mac terminal or windows powershell) navigate to your kubernetes repository and type:  
+  NOTE: use the additional -k option if you are running the kind cluster instead of docker desktop.
 
 On a mac (in terminal)  
 ```$ ./postgis.sh -l```  

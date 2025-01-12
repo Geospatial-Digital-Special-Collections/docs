@@ -1,8 +1,12 @@
 ## Geospatial Digital Special Collections - Installation Notes  
 
 An alternative to using docker desktop.  
+- [Mac install](#mac)  
+- [Fedora install](#fedora)  
 
-### Command line alternative docker/k8s install for mac:  
+NOTE: no PC version yet ...
+
+### <a name="mac"></a>Command line alternative docker/k8s install for mac:  
 
 - install go (see https://go.dev/doc/install)  
 
@@ -57,7 +61,7 @@ An alternative to using docker desktop.
   ```
   NOTE: don't forget to stop cloud-provider-kind.  
 
-### Command line alternative docker/k8s install for fedora:  
+### <a name="fedora"></a>Command line alternative docker/k8s install for fedora:  
 
 - install go (see https://go.dev/doc/install)  
 
