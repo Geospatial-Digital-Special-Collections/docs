@@ -18,7 +18,9 @@ An alternative to using docker desktop.
   kind - see (docs)[https://kind.sigs.k8s.io/docs/user/quick-start/]  
 
 - install colima (for running docker-engine on mac in vm)  
-  `brew install colima`
+  ```
+  brew install colima
+  ```
 
 - install kind cloud provider (for external IPs on load balancers)  
   ```
@@ -34,7 +36,9 @@ An alternative to using docker desktop.
   ```  
   NOTE: on colima memory must be 4 for SOLR, the number of cpus can change  
   On another shell  
-  `sudo cloud-provider-kind > /dev/null 2>&1 &`
+  ```
+  sudo cloud-provider-kind > /dev/null 2>&1 &
+  ```
 
 - bring down cluster and stop docker  
   ```
@@ -81,13 +85,19 @@ An alternative to using docker desktop.
   kubectl label node kind-control-plane node.kubernetes.io/exclude-from-external-load-balancers
   ```
   On another shell  
-  `sudo cloud-provider-kind > /dev/null 2>&1 &`
+  ```
+  sudo cloud-provider-kind > /dev/null 2>&1 &
+  ```
 
 - Start GDSC  
-  `./postgis.sh -lk`
+  ```
+  ./postgis.sh -lk
+  ```
 
 - Stop GDSC  
-  `./cleanup -l`
+  ```
+  ./cleanup -l
+  ```
 
 - Delete k8s cluster and stop docker
   ```
