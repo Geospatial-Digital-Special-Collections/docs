@@ -40,7 +40,7 @@ An alternative to using docker desktop.
   sudo cloud-provider-kind > /dev/null 2>&1 &
   ```
 
-- Start GDSC  
+- Start GDSC (ote the -k option for kind and the -l option for local)  
   ```
   ./postgis.sh -lk
   ```
@@ -49,7 +49,7 @@ An alternative to using docker desktop.
   ```
   ./cleanup -l
   ```
-  
+
 - bring down cluster and stop docker  
   ```
   kind delete cluster
@@ -99,7 +99,7 @@ An alternative to using docker desktop.
   sudo cloud-provider-kind > /dev/null 2>&1 &
   ```
 
-- Start GDSC  
+- Start GDSC (note the -k option for kind and the -l option for local)  
   ```
   ./postgis.sh -lk
   ```
