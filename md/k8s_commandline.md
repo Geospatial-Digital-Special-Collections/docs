@@ -41,7 +41,7 @@ NOTE: no PC version yet ...
   NOTE: on colima memory must be 4 for SOLR, the number of cpus can change  
   On another shell  
   ```
-  sudo cloud-provider-kind > /dev/null 2>&1 &
+  sudo cloud-provider-kind
   ```
 
 - Start GDSC (ote the -k option for kind and the -l option for local)  
