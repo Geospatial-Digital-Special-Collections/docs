@@ -100,7 +100,7 @@ NOTE: no PC version yet ...
   ```
   On another shell  
   ```
-  sudo cloud-provider-kind > /dev/null 2>&1 &
+  sudo cloud-provider-kind
   ```
 
 - Start GDSC (note the -k option for kind and the -l option for local)  
@@ -120,6 +120,14 @@ NOTE: no PC version yet ...
   ```
 
   NOTE: don't forget to stop cloud-provider-kind.
+
+- Permissions notes (in gdsc/kubernetes/_localsata)
+  ```
+  sudo groupadd -g 8983 solr
+  sudo usermod -aG solr <username>
+  sudo chown -R <username>:solr solr
+  sudo chown -R root:root data
+  ```
 
 ### notes for virtualbox environment  
 
