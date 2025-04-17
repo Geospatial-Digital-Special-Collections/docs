@@ -21,7 +21,7 @@ $ conda install jupyter notebook
 $ conda update -n base -c defaults conda
 $ conda create --name gdsc python=3.9
 $ source activate gdsc
-$ pip install kubernetes boxsdk "boxsdk[jwt]" python-dotenv pyyaml pandas openpyxl 
+$ pip install kubernetes boxsdk "boxsdk[jwt]" python-dotenv pyyaml pandas openpyxl pillow
 # postgis and the ipykernel are used in dev but not production
 $ pip install psycopg2-binary postgis
 $ python -m pip install ipykernel --user
@@ -35,7 +35,7 @@ On a pc (in powershell)
 > conda create --name gdsc python=3.9
 > conda activate gdsc
 > conda install jupyter notebook
-> pip install kubernetes boxsdk "boxsdk[jwt]" python-dotenv pyyaml pandas openpyxl 
+> pip install kubernetes boxsdk "boxsdk[jwt]" python-dotenv pyyaml pandas openpyxl pillow
 # postgis and the ipykernel are used in dev but not production
 > pip install psycopg2-binary postgis
 > python -m pip install ipykernel --user
