@@ -48,8 +48,7 @@ NOTE: no PC version yet ...
   ```
   kind delete cluster
   colima stop
-  ```
-  NOTE: don't forget to stop cloud-provider-kind.  
+  ``` 
 
 ### <a name="fedora"></a>Command line alternative docker/k8s install for fedora:  
 
@@ -86,6 +85,10 @@ NOTE: no PC version yet ...
   ```
   systemctl start docker
   sed s+{{pwd}}+$(pwd)+g kind-config.yaml | kind create cluster --config -
+  docker run -d --name proxy-docker-hub --restart=always \
+    --net=kind \
+    -e REGISTRY_PROXY_REMOTEURL=https://registry-1.docker.io \
+    registry:2  
   kubectl label node kind-control-plane node.kubernetes.io/exclude-from-external-load-balancers
   ```
   On another shell  
@@ -93,23 +96,11 @@ NOTE: no PC version yet ...
   sudo cloud-provider-kind
   ```
 
-- Start GDSC (note the -k option for kind and the -l option for local)  
-  ```
-  ./postgis.sh -lk
-  ```
-
-- Stop GDSC  
-  ```
-  ./cleanup -l
-  ```
-
 - Delete k8s cluster and stop docker
   ```
   kind delete cluster
   systemctl stop docker
   ```
-
-  NOTE: don't forget to stop cloud-provider-kind.
 
 - Permissions notes (in gdsc/kubernetes/_localsata)
   ```
