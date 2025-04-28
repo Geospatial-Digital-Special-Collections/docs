@@ -27,9 +27,16 @@ Other functionality in the tool set includes:
 
 This is a basic set of steps for a common workflow with GDSC:  
 
-- start docker desktop  
+- start local k8s cluster
+   - start docker desktop (if installed) 
+   - for kind cluster
+      - open a bash terminal (mac) or powershell (windows) and navigate to the kubernetes directory. 
+      - start colima ```colima start --cpu 4 --memory 4```
+      - start kind cluster ```sed s+{{pwd}}+$(pwd)+g kind-config.yaml | kind create cluster --config```  
+      - in another shell ```sudo cloud-provider-kind```
 - open a bash terminal (mac) or powershell (windows) and navigate to the kubernetes directory.  
-- type ```postgis.sh -l``` (mac) or ```postgis.ps1 -l``` (windows)   
+- type ```postgis.sh -l``` (mac) or ```postgis.ps1 -l``` (windows)  
+   - use  ```postgis.sh -lk``` on kind cluster
 - once the system comes up, navigate to the tools directory  
 - type ```git pull origin main``` (to get the recent changes from the repository)
 - type ```jupyter notebook``` and wait for the notebook to start in a web browser  
@@ -43,7 +50,12 @@ At this point you are ready to do work and use the tools. When you are done foll
 - find the browser tab with the jupyter file system interface and select __Shutdown__ from the __File__ menu. 
 - return to the bash terminal (mac) or powershell (windows) and navigate to the kubernetes directory  
 - type ```cleanup.sh -l``` (mac) or ```cleanup.ps1 -l``` (windows)  
-- once the script has finished quit docker desktop  
+- once the script has finished delete the k8s cluster
+   - quit docker desktop if running
+   - for kind cluster
+      - ```kind delete cluster```
+      - ```colima stop``` 
+      - don't forget to kill the cloud-provider-kind process
 
 ### debugging the jupyter notebook on localhost
 

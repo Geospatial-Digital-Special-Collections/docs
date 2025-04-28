@@ -32,27 +32,17 @@ NOTE: no PC version yet ...
   sudo install ~/go/bin/cloud-provider-kind /usr/local/bin
   ```
 
-- Start docker and create k8s cluster (in gdsc/kubernetes/)
+- Start docker, create k8s cluster, create docker container for kind k8s cache (in gdsc/kubernetes/)
   ```
   colima start --cpu 4 --memory 4
   sed s+{{pwd}}+$(pwd)+g kind-config.yaml | kind create cluster --config -
+  docker run -d --name proxy-docker-hub --restart=always \
+    --net=kind \
+    -e REGISTRY_PROXY_REMOTEURL=https://registry-1.docker.io \
+    registry:2  
   kubectl label node kind-control-plane node.kubernetes.io/exclude-from-external-load-balancers
   ```  
-  NOTE: on colima memory must be 4 for SOLR, the number of cpus can change  
-  On another shell  
-  ```
-  sudo cloud-provider-kind
-  ```
-
-- Start GDSC (ote the -k option for kind and the -l option for local)  
-  ```
-  ./postgis.sh -lk
-  ```
-
-- Stop GDSC  
-  ```
-  ./cleanup -l
-  ```
+  NOTE: on colima memory must be 4 for SOLR, the number of cpus can change.
 
 - bring down cluster and stop docker  
   ```
