@@ -91,10 +91,6 @@ NOTE: no PC version yet ...
     registry:2  
   kubectl label node kind-control-plane node.kubernetes.io/exclude-from-external-load-balancers
   ```
-  On another shell  
-  ```
-  sudo cloud-provider-kind
-  ```
 
 - Delete k8s cluster and stop docker
   ```
@@ -102,7 +98,7 @@ NOTE: no PC version yet ...
   systemctl stop docker
   ```
 
-- Permissions notes (in gdsc/kubernetes/_localsata)
+- Permissions notes (in gdsc/kubernetes/_localdata)
   ```
   sudo groupadd -g 8983 solr
   sudo usermod -aG solr <username>
