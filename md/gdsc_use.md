@@ -28,7 +28,7 @@ Other functionality in the tool set includes:
 This is a basic set of steps for a common workflow with GDSC:  
 
 - start local k8s cluster
-   - start docker desktop (if installed) 
+   - start docker desktop (if installed)  
    --OR--  
    - for kind cluster
       - open a bash terminal (mac) or powershell (windows) and navigate to the kubernetes directory. 
