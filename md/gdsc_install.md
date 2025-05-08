@@ -88,9 +88,9 @@ On a pc (in powershell)
 +-- _localdata  
 |   data/  
 |   solr/  
-|   --- collections  
-|   --- dcat  
-|   --- jsonld  
+|   |   collections/  
+|   |   dcat/  
+|   |   jsonld/  
 |   tileserv/  
 |   |   index.html  
 |   |   pg_tileserv.toml  
