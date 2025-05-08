@@ -29,10 +29,11 @@ This is a basic set of steps for a common workflow with GDSC:
 
 - start local k8s cluster
    - start docker desktop (if installed) 
+   --OR--  
    - for kind cluster
       - open a bash terminal (mac) or powershell (windows) and navigate to the kubernetes directory. 
       - start colima ```colima start --cpu 4 --memory 4```
-      - start kind cluster ```sed s+{{pwd}}+$(pwd)+g kind-config.yaml | kind create cluster --config```  
+      - start kind cluster ```sed s+{{pwd}}+$(dirname $(pwd))+g kind-config.yaml | kind create cluster --config```  
       - in another shell ```sudo cloud-provider-kind```
 - open a bash terminal (mac) or powershell (windows) and navigate to the kubernetes directory.  
 - type ```postgis.sh -l``` (mac) or ```postgis.ps1 -l``` (windows)  

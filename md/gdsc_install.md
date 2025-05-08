@@ -5,8 +5,11 @@
 You will need a minimum of:  
 
 - python (see notes below)<sup>1</sup>  
-- jupyter notebook<sup>1</sup>  
-- [docker desktop](https://www.docker.com/products/personal/) (personal version)<sup>3</sup> or [command line alternative](k8s_commandline.md).  
+- jupyter notebook<sup>1</sup> 
+- docker and kubernetes 
+   - [docker desktop](https://www.docker.com/products/personal/) (personal version)<sup>3</sup>  
+   --or--  
+   - [colima and kind](k8s_commandline.md)  (command line alternative)
 - git (command line preferred) and a github account<sup>2</sup>  
 
 <sup>1</sup> both can be installed with either [anaconda](https://www.anaconda.com/), [miniconda](https://docs.conda.io/projects/miniconda/en/latest/miniconda-install.html) (preferred), or [miniforge](https://github.com/conda-forge/miniforge) (advanced).  
@@ -64,8 +67,11 @@ On a pc (in powershell)
 +-- tools  
 |   +-- config  
 |   |   +-- keys  
+|   |   |   airnow.env  
 |   |   |   box.json
 |   |   |   census.env  
+|   |   |   earthdata.env  
+|   |   |   howloud.env  
 |   |   +-- kubernetes  
 |   |   |   gdsc-controller-token.yaml
 |   |   |   postgis-secret.yaml  
@@ -74,18 +80,25 @@ On a pc (in powershell)
 |   |   |   client_key.pem  
 |   |   |   server_cert.pem  
 +-- kubernetes  
-|   +-- _localdata  
-|   |   data/  
-|   |   solr/  
-|   |   tileserv/  
 |   +-- secrets  
 |   |   docker-hub-secret.yaml  
 |   |   gdsc-controller-token.yaml  
 |   |   local-gdsc-controller-token.yaml  
 |   |   postgis-secret.yaml
++-- _localdata  
+|   data/  
+|   solr/  
+|   --- collections  
+|   --- dcat  
+|   --- jsonld  
+|   tileserv/  
+|   |   index.html  
+|   |   pg_tileserv.toml  
+|   |   preview-function.html 
+|   |   preview-table.html
 ```  
 
-NOTE: make sure the solr/ and tileserv/ folders have the actual files from the provided zipfile.  
+__NOTE__: make sure the solr/ and tileserv/ directories in _localdata have the actual files from the provided zipfile.  The data/ directory should be empty.  
 
 ### Testing the Install  
 
